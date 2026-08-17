@@ -1,0 +1,18 @@
+# Build directories
+build/
+out/
+cmake-build-*/
+_deps/
+
+# CMake
+CMakeCache.txt
+CMakeFiles/
+CTestTestfile.cmake
+cmake_install.cmake
+compile_commands.json
+
+# Editor / OS
+.idea/
+.vscode/
+.DS_Store
+*.swp
