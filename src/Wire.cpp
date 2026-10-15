@@ -8,13 +8,17 @@ namespace lmap
 {
     std::optional<std::string> validateConfig(const StreamConfig& cfg)
     {
-        static constexpr std::array<std::uint32_t, 6> kValidRates{
-            44100, 48000, 88200, 96000, 176400, 192000 };
+        static constexpr std::array<std::uint32_t, 6> kValidRates { 44100, 48000, 88200, 96000, 176400, 192000 };
+
         if (std::find(kValidRates.begin(), kValidRates.end(), cfg.sample_rate) == kValidRates.end())
+        {
             return "sample_rate " + std::to_string(cfg.sample_rate) + " is not a supported rate";
+        }
 
         if (cfg.channel_count == 0 || cfg.channel_count > kMaxChannelCount)
+        {
             return "channel_count must be in 1.." + std::to_string(kMaxChannelCount);
+        }
 
         if (static_cast<std::uint8_t>(cfg.sample_format) > static_cast<std::uint8_t>(SampleFormat::F32LE))
             return "sample_format is out of range";
